@@ -1,13 +1,11 @@
-import {logo} from "../logo.png";
-
+// import {logo} from '../assets/logo.png';
 
 const Header = () => {
-
 
   return (
     <header id="main-header">
       <div id="title">
-        <img src={logo} alt="logo with utensils"/>
+        {/* <img src={logo} alt="logo with utensils"/> */}
         <h1>BiteSwift</h1>
       </div>
       <nav>
