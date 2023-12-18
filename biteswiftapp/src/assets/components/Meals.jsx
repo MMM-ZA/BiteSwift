@@ -34,7 +34,7 @@ import {useEffect, useState} from 'react';
   return (
     <div>
       <h2>Meal List</h2>
-      <ul>
+      <ul id='meals'>
         {meals.map(meal => (
           <li key={meal.id}>{meal.name}</li>
         ))}
