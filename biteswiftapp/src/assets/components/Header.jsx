@@ -1,4 +1,6 @@
-// import {logo} from '../assets/logo.png';
+// import {logo} from '../UI/logo.png';
+import Button from '../UI/Button.jsx';
+
 
 const Header = () => {
 
@@ -9,7 +11,7 @@ const Header = () => {
         <h1>BiteSwift</h1>
       </div>
       <nav>
-        <button>Cart</button>
+        <Button textOnly>Cart</Button>
       </nav>
     </header>
 
