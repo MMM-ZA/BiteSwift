@@ -3,10 +3,14 @@ import Modal from '../UI/Modal.jsx';
 import CartContext from '../../store/CartContext';
 import { currencyFormatter } from '../../util/formatting';
 import Button from '../UI/Button.jsx';
+import UserProgressContext from '../../store/UserProgressContext.jsx';
 
 export default function Cart() {
 
   const cartCtx = useContext(CartContext);
+  const userProgressCtx =  useContext(UserProgressContext);
+
+
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0

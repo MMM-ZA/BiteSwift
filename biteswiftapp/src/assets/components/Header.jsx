@@ -1,8 +1,20 @@
 // import {logo} from '../UI/logo.png';
 import Button from '../UI/Button.jsx';
+import CartContext from '../../store/CartContext.jsx';
+import UserProgressContext from '../../store/UserProgressContext.jsx';
 
 
-const Header = () => {
+export default function  Header() {
+  const cartCtx = useContext(CartContext);
+  const userProgressCtx =  useContext(UserProgressContext);
+
+  const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, items) => {
+    return totalNumberOfItems + items.quantity ;
+  }, 0)
+
+  function handleShowCart(){
+    userProgressCtx.showCart();
+  }
 
   return (
     <header id="main-header">
@@ -11,7 +23,7 @@ const Header = () => {
         <h1>BiteSwift</h1>
       </div>
       <nav>
-        <Button textOnly>Cart</Button>
+        <Button textOnly onClick = {handleShowCart}>Cart ({totalCartItems})</Button>
       </nav>
     </header>
 
@@ -20,5 +32,3 @@ const Header = () => {
 
 
 }
-
-export default Header;
