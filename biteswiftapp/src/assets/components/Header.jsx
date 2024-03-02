@@ -12,7 +12,7 @@ export default function  Header() {
     return totalNumberOfItems + items.quantity ;
   }, 0)
 
-  function handleShowCart(){
+  function handleShowCart() {
     userProgressCtx.showCart();
   }
 
