@@ -7,7 +7,7 @@ import UserProgressContext from '../../store/UserProgressContext.jsx';
 
 export default function  Header() {
   const cartCtx = useContext(CartContext);
-  const userProgressCtx =  useContext(UserProgressContext);
+  const userProgressCtx = useContext(UserProgressContext);
 
   const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
   return totalNumberOfItems + item.quantity;
