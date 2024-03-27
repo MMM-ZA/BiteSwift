@@ -11,6 +11,13 @@ export default function Cart() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
 
+    // To check if userProgressCtx is defined before accessing its properties
+  if (!userProgressCtx) {
+    console.error('User progress context is undefined!');
+    return null;
+  }
+
+
 //Total Cart items
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
