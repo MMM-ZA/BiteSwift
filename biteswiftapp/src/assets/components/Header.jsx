@@ -1,13 +1,16 @@
 // import {logo} from '../UI/logo.png';
 import { useContext } from 'react';
-import Button from '../UI/Button.jsx';
 import CartContext from '../../store/CartContext.jsx';
 import UserProgressContext from '../../store/UserProgressContext.jsx';
+import Button from '../UI/Button.jsx';
+
 
 
 export default function  Header() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+
+  console.log('userProgressCtx:', userProgressCtx);
 
   const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
   return totalNumberOfItems + item.quantity;
