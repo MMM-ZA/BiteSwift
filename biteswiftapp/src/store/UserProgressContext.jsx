@@ -43,4 +43,4 @@ export function UserProgressContextProvider({ children }) {
   );
 }
 
-export default UserProgressContextProvider;
+export default UserProgressContext;

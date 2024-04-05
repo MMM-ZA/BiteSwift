@@ -6,17 +6,12 @@ import Button from '../UI/Button.jsx';
 import UserProgressContext from '../../store/UserProgressContext.jsx';
 import CartItem from './CartItem.jsx';
 
+
 export default function Cart() {
 
 // Assessing the context
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
-
-    // To check if userProgressCtx is defined before accessing its properties
-  if (!userProgressCtx) {
-    console.error('User progress context is undefined!');
-    return null;
-  }
 
 
 //Total Cart items
@@ -39,13 +34,17 @@ export default function Cart() {
       <CartItem key={item.id}
         name={item.name}
        quantity={item.quantity}
-        price={item.price}/>
+        price={item.price}
+        onIncrease={() => cartCtx.addItem(item)}
+        onDecrease={() => cartCtx.removeItem(item.id)}
+        />
      ))}
     </ul>
    <p className='cart-total'>{currencyFormatter.format(cartTotal)}</p>
    <p className='modal-actions'>
     <Button textOnly onClick={handleCloseCart}>Close</Button>
-    <Button onClick={handleCloseCart}>Go to Checkout</Button>
+    {cartCtx.items.length > 0 &&
+    <Button onClick={handleCloseCart}>Go to Checkout</Button>}
    </p>
 
     </Modal>
