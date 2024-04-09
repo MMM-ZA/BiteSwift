@@ -4,6 +4,7 @@ import Cart from './assets/components/Cart.jsx'
 // import './index.css';
 import { CartContextProvider } from './store/CartContext.jsx';
 import { UserProgressContextProvider } from './store/UserProgressContext.jsx';
+import Checkout from './assets/components/Checkout.jsx';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header/>
        <Meals/>
       <Cart/>
+      <Checkout/>
      </CartContextProvider>
    </UserProgressContextProvider>
   );
