@@ -6,6 +6,7 @@ import { CartContextProvider } from './store/CartContext.jsx';
 import { UserProgressContextProvider } from './store/UserProgressContext.jsx';
 import Checkout from './assets/components/Checkout.jsx';
 
+
 function App() {
   return (
 
