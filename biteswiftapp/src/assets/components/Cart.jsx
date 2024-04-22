@@ -5,7 +5,7 @@ import { currencyFormatter } from '../../util/formatting.js';
 import Button from '../UI/Button.jsx';
 import UserProgressContext from '../../store/UserProgressContext.jsx';
 import CartItem from './CartItem.jsx';
-import { on } from 'nodemon';
+
 
 
 export default function Cart() {
@@ -32,7 +32,8 @@ export default function Cart() {
 
 
   return (
-    <Modal className="cart" open={userProgressCtx.progress === 'cart'} onClose={handleCloseCart}>
+    <Modal className="cart" open={userProgressCtx.progress === 'cart'}
+     onClose={userProgressCtx.progress === 'cart' ? handleCloseCart : null}>
     <h2>Cart</h2>
     <ul>
      {cartCtx.items.map((item) => (
