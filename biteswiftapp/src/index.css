@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pangolin&display=swap');
 
 * {
   box-sizing: border-box;
@@ -25,6 +26,7 @@ body {
   display: flex;
   gap: 1rem;
   align-items: center;
+
 }
 
 #main-header #title img {
@@ -41,8 +43,9 @@ body {
 }
 
 h1 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
+  font-family: "Pangolin";
+  font-weight: 400;
+  font-style: normal;
   font-size: 2rem;
   margin: 0;
   color: #ffc404;
@@ -129,6 +132,12 @@ h1 {
 .modal-actions .text-button:hover,
 .modal-actions .text-button:active {
   color: #312c1d;
+}
+
+.cart h2 {
+  font-family: "Pangolin";
+  font-weight: 400;
+  font-style: normal;
 }
 
 .cart-total {
