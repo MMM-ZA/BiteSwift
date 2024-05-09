@@ -20,7 +20,7 @@ export default function Checkout() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
 
-  const {data, isLoading: isSendingData, error, sendRequest} = useHttp('http://localhost:3000/orders', requestConfig, []);
+  const {data, isLoading: isSendingData, error, sendRequest, clearData} = useHttp('http://localhost:3000/orders', requestConfig, []);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
@@ -35,6 +35,7 @@ export default function Checkout() {
   function handleFinishOrder() {
       userProgressCtx.hideCheckout();
       cartCtx.emptyCart();
+      clearData();
   }
 
   function handleSubmit(event) {
@@ -54,13 +55,15 @@ export default function Checkout() {
   }
 
 
-  let actions = <>
+  let actions = (
+  <>
     <Button  type="button" textOnly onClick={handleCloseCheckout}>
       Close
     </Button>
     <Button>Submit Order</Button>
 
   </>
+  );
 
   if (isSendingData) {
     actions = <span>Sending Order Data...</span>;
@@ -69,34 +72,34 @@ export default function Checkout() {
 
   if (data && !error) {
     return (
-    <Modal open={userProgressCtx.progress === 'checkout'} onClose={handleFinishOrder}>
+    <Modal open={userProgressCtx.progress === 'checkout'}
+     onClose={handleFinishOrder}>
       <h2>Success!</h2>
       <p>Your order has been submitted!</p>
          <p className="modal-actions">
          <Button onClick={handleFinishOrder}>Ok</Button>
       </p>
-    </Modal>)
+    </Modal>
+    );
   }
 
   return (
    <Modal open={userProgressCtx.progress === 'checkout'} onClose={handleCloseCheckout}>
-    <form onSubmit={handleSubmit}>
-      <h2>Checkout</h2>
-      <p>Total Amount:{currencyFormatter.format(cartTotal)} </p>
-      <Input label="Full Name" id="full-name" type="text" />
-      <Input label="E-mail Address" id="email" type="email" />
-      <Input label="Street" id="street" type="text" />
-      <div className="control-row">
-        <Input label="Postal Code" id="postal-code" type="text" />
-        <Input label="City" id="city" type="text" />
-      </div>
+      <form onSubmit={handleSubmit}>
+        <h2>Checkout</h2>
+        <p>Total Amount:{currencyFormatter.format(cartTotal)} </p>
+        <Input label="Full Name" id="full-name" type="text" />
+        <Input label="E-mail Address" id="email" type="email" />
+        <Input label="Street" id="street" type="text" />
+         <div className="control-row">
+          <Input label="Postal Code" id="postal-code" type="text" />
+          <Input label="City" id="city" type="text" />
+        </div>
 
-      {error && <Error title="Failed to submit order" message={error} />}
+        {error && <Error title="Failed to submit order" message={error} />}
 
-      <p className="modal-actions">
-
-      </p>
-    </form>
+       <p className="modal-actions">{actions}</p>
+     </form>
    </Modal>
   );
 }
