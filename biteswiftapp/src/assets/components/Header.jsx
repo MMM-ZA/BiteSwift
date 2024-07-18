@@ -1,4 +1,4 @@
-// import {logo} from '../UI/logo.png';
+import burgerLogo from '../images/burgerLogo.png'; 
 import { useContext } from 'react';
 import CartContext from '../../store/CartContext.jsx';
 import UserProgressContext from '../../store/UserProgressContext.jsx';
@@ -23,7 +23,7 @@ export default function  Header() {
   return (
     <header id="main-header">
       <div id="title">
-
+      <img src={burgerLogo} alt="Burger Logo" />
         <h1>BiteSwift</h1>
       </div>
       <nav>
